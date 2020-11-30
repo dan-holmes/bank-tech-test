@@ -50,15 +50,18 @@ describe Account do
       end
     end
     context "when there is a deposit" do
+      let(:transaction1) {
+        double(:transaction,
+               date: Date.new(2020, 1, 1),
+               credit_formatted: "50.00",
+               debit_formatted: nil,
+               updated_balance_formatted: "100.00")
+      }
       before do
-        allow(transaction).to receive(:date) { Date.new(2020, 1, 1) }
-        allow(transaction).to receive(:credit_formatted) { "50.00" }
-        allow(transaction).to receive(:debit_formatted) { nil }
-        allow(transaction).to receive(:updated_balance_formatted) { "100.00" }
+        allow(transaction_class).to receive(:new) { transaction1 }
         account.deposit(50, transaction_class: transaction_class)
       end
       it "outputs the date, credit, debit and balance for that transaction" do
-        p account.summary
         expect(account.summary).to include "01/01/2020 || 50.00 || || 100.00"
       end
     end
