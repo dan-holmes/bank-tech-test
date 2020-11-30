@@ -49,5 +49,17 @@ describe Account do
         expect(account.summary).to include "date || credit || debit || balance"
       end
     end
+    context "when there is a deposit" do
+      before do
+        allow(transaction).to receive(:date) { Date.new(2020, 1, 1) }
+        allow(transaction).to receive(:type) { :credit }
+        allow(transaction).to receive(:absValue) { 50.0 }
+        allow(transaction).to receive(:updated_balance) { 100.0 }
+        account.deposit(50, transaction_class: transaction_class)
+      end
+      it "outputs the date, credit, debit and balance for that transaction" do
+        expect(account.summary).to include "01/01/2020 || 50.00 || || 100.00"
+      end
+    end
   end
 end

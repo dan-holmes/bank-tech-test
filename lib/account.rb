@@ -18,6 +18,21 @@ class Account
   end
 
   def summary
-    "date || credit || debit || balance"
+    output = "date || credit || debit || balance"
+    @transactions.each do |transaction|
+      if transaction.type == :credit
+        credit = "%.2f" % transaction.absValue
+        debit = nil
+      else
+        credit = nil
+        debit = "%.2f" % transaction.absValue
+      end
+      transaction_array = [transaction.date.strftime("%d/%m/%Y"), credit, debit, "%.2f" % transaction.updated_balance]
+      zipped_array = transaction_array.zip(Array.new(3, "||")).flatten
+      compact_zipped_array = zipped_array.compact
+      transaction_string = compact_zipped_array.join(" ")
+      output += '\n' + transaction_string
+    end
+    output
   end
 end
