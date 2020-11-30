@@ -3,7 +3,7 @@ require "date"
 class Transaction
   attr_reader :value, :initial_balance, :date
 
-  def initialize(value:, initial_balance:, date: "2020-01-01")
+  def initialize(value:, initial_balance:, date: Date.today.strftime)
     @value = value
     @initial_balance = initial_balance
     @date = Date.parse(date)

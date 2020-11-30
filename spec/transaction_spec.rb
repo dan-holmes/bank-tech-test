@@ -38,5 +38,10 @@ describe Transaction do
       transaction = Transaction.new(value: 10, initial_balance: 50, date: "2020-01-01")
       expect(transaction.date).to eq Date.new(2020, 1, 1)
     end
+
+    it "defaults to today's date" do
+      transaction = Transaction.new(value: 10, initial_balance: 50)
+      expect(transaction.date).to eq Date.today
+    end
   end
 end
