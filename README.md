@@ -15,3 +15,7 @@ I want to be able to withdraw
 As a customer
 So that I can keep track of my finances
 I want to see a printed statement of my account history
+
+## Domain Model Diagram
+
+![Domain Model Diagram](https://i.imgur.com/peHaEJb.png)
