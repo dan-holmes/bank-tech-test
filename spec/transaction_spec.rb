@@ -2,7 +2,7 @@ require "transaction"
 
 describe Transaction do
   describe ".initialize" do
-    it "is initialized with a value" do
+    it "stores a value" do
       transaction = Transaction.new(10)
       expect(transaction.value).to eq 10
     end
