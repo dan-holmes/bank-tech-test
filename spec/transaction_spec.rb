@@ -27,4 +27,11 @@ describe Transaction do
       expect(transaction.new_balance).to eq 60
     end
   end
+
+  describe "date" do
+    it "can be set using the constructor" do
+      transaction = Transaction.new(value: 10, initial_balance: 50, date: "2020-01-01")
+      expect(transaction).to be_a Transaction
+    end
+  end
 end
