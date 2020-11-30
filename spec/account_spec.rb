@@ -64,6 +64,11 @@ describe Account do
       it "outputs the date, credit, debit and balance for that transaction" do
         expect(account.summary).to include "01/01/2020 || 50.00 || || 100.00"
       end
+      it "outputs a line break between each row, and after the header" do
+        account.deposit(50, transaction_class: transaction_class)
+        table = "date || credit || debit || balance\n01/01/2020 || 50.00 || || 100.00\n01/01/2020 || 50.00 || || 100.00"
+        expect(account.summary).to eq table
+      end
     end
   end
 end
