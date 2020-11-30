@@ -1,8 +1,9 @@
 class Transaction
-  attr_reader :value
+  attr_reader :value, :initial_balance
 
-  def initialize(value)
+  def initialize(value: 0, initial_balance: 0)
     @value = value
+    @initial_balance = initial_balance
   end
 
   def type
