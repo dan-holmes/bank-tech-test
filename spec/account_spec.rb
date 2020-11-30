@@ -19,7 +19,7 @@ describe Account do
       expect { account.deposit(10) }.to change { account.balance }.by(10)
     end
     it "create a new transaction with given value and initial balance" do
-      expect(transaction_class).to receive(:new).with(value: 10, initial_balance: 0)
+      expect(transaction_class).to receive(:new).with(value: 10, updated_balance: 10)
       account.deposit(10, transaction_class: transaction_class)
     end
   end

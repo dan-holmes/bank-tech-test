@@ -7,7 +7,7 @@ class Account
   end
 
   def deposit(value, transaction_class: Transaction)
-    transaction_class.new(value: value, initial_balance: @balance)
     @balance += value
+    transaction_class.new(value: value, updated_balance: @balance)
   end
 end
