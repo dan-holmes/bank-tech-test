@@ -1,3 +1,5 @@
+require_relative "./transaction"
+
 class Account
   attr_reader :balance, :transactions
 
@@ -18,12 +20,11 @@ class Account
   end
 
   def summary
-    header = "date || credit || debit || balance"
-    rows = @transactions.map do |transaction|
+    puts "date || credit || debit || balance"
+    @transactions.each do |transaction|
       transaction_array = convert_to_array(transaction)
-      convert_to_row(transaction_array)
+      puts convert_to_row(transaction_array)
     end
-    [header].concat(rows).join("\n")
   end
 
   private

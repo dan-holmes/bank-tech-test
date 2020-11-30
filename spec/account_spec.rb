@@ -46,7 +46,7 @@ describe Account do
   describe ".summary" do
     context "when there are no transaction" do
       it "creates the headers date, credit, debit and balance" do
-        expect(account.summary).to include "date || credit || debit || balance"
+        expect { account.summary }.to output(/date || credit || debit || balance/).to_stdout
       end
     end
     context "when there is a deposit" do
@@ -62,12 +62,12 @@ describe Account do
         account.deposit(50, transaction_class: transaction_class)
       end
       it "outputs the date, credit, debit and balance for that transaction" do
-        expect(account.summary).to include "01/01/2020 || 50.00 || || 100.00"
+        expect { account.summary }.to output(%r"^01/01/2020 || 50.00 || || 100.00$").to_stdout
       end
       it "outputs a line break between each row, and after the header" do
         account.deposit(50, transaction_class: transaction_class)
-        table = "date || credit || debit || balance\n01/01/2020 || 50.00 || || 100.00\n01/01/2020 || 50.00 || || 100.00"
-        expect(account.summary).to eq table
+        table = %r"^date || credit || debit || balance\n01/01/2020 || 50.00 || || 100.00\n01/01/2020 || 50.00 || || 100.00$"
+        expect { account.summary }.to output(table).to_stdout
       end
     end
   end
