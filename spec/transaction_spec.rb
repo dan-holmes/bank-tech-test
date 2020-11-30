@@ -37,6 +37,13 @@ describe Transaction do
     end
   end
 
+  describe ".updated_balance_formatted" do
+    let(:transaction) { Transaction.new(value: 10, updated_balance: 50) }
+    it "returns the given updated_balance formatted as a string" do
+      expect(transaction.updated_balance_formatted).to eq "50.00"
+    end
+  end
+
   describe ".date" do
     it "can be set and retrieved" do
       transaction = Transaction.new(value: 10, updated_balance: 50, date: Date.new(2020, 1, 1))

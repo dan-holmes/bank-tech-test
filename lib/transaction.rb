@@ -17,14 +17,18 @@ class Transaction
     format_currency(credit)
   end
 
+  def updated_balance_formatted
+    format_currency(@updated_balance)
+  end
+
   private
 
   def debit
-    value if value > 0
+    value if @value > 0
   end
 
   def credit
-    -value if value < 0
+    -value if @value < 0
   end
 
   def format_currency(float)
