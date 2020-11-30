@@ -5,4 +5,8 @@ class Account
     @balance = 0
     @transactions = []
   end
+
+  def deposit(value)
+    @balance += value
+  end
 end
