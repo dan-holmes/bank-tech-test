@@ -11,4 +11,11 @@ class Account
     transaction = transaction_class.new(value: value, updated_balance: @balance)
     @transactions.push(transaction)
   end
+
+  def withdraw(value, transaction_class: Transaction)
+    deposit_value = -value
+    @balance += deposit_value
+    transaction = transaction_class.new(value: deposit_value, updated_balance: @balance)
+    @transactions.push(transaction)
+  end
 end

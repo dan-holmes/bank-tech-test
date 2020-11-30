@@ -26,4 +26,20 @@ describe Account do
       expect { account.deposit(10) }.to change { account.transactions.length }.by(1)
     end
   end
+
+  describe ".withdraw" do
+    before do
+      account.deposit(50)
+    end
+    it "decreases the balance by the given amount" do
+      expect { account.withdraw(10) }.to change { account.balance }.by(-10)
+    end
+    it "create a new transaction with given value and updated balance" do
+      expect(transaction_class).to receive(:new).with(value: -10, updated_balance: 40)
+      account.withdraw(10, transaction_class: transaction_class)
+    end
+    it "adds new transaction to list" do
+      expect { account.withdraw(10) }.to change { account.transactions.length }.by(1)
+    end
+  end
 end
