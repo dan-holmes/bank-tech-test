@@ -28,10 +28,15 @@ describe Transaction do
     end
   end
 
-  describe "date" do
-    it "can be set using the constructor" do
+  describe ".date" do
+    it "can be set using the constructor as a string" do
       transaction = Transaction.new(value: 10, initial_balance: 50, date: "2020-01-01")
       expect(transaction).to be_a Transaction
+    end
+
+    it "will be stored in the form of a date" do
+      transaction = Transaction.new(value: 10, initial_balance: 50, date: "2020-01-01")
+      expect(transaction.date).to eq Date.new(2020, 1, 1)
     end
   end
 end
