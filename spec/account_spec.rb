@@ -42,4 +42,12 @@ describe Account do
       expect { account.withdraw(10) }.to change { account.transactions.length }.by(1)
     end
   end
+
+  describe ".summary" do
+    context "when there are no transaction" do
+      it "creates the headers date, credit, debit and balance" do
+        expect(account.summary).to include "date || credit || debit || balance"
+      end
+    end
+  end
 end

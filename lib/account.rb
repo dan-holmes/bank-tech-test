@@ -16,4 +16,8 @@ class Account
     deposit_value = -value
     deposit(deposit_value, transaction_class: transaction_class)
   end
+
+  def summary
+    "date || credit || debit || balance"
+  end
 end
