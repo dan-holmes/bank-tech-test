@@ -6,7 +6,8 @@ class Account
     @transactions = []
   end
 
-  def deposit(value)
+  def deposit(value, transaction_class: Transaction)
+    transaction_class.new(value: value, initial_balance: @balance)
     @balance += value
   end
 end
