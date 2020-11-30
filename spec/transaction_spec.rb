@@ -13,5 +13,10 @@ describe Transaction do
       transaction = Transaction.new(10)
       expect(transaction.type).to eq :debit
     end
+
+    it "returns :credit if value is negative" do
+      transaction = Transaction.new(-10)
+      expect(transaction.type).to eq :credit
+    end
   end
 end
