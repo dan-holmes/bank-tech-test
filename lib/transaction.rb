@@ -1,7 +1,7 @@
 class Transaction
   attr_reader :value, :initial_balance
 
-  def initialize(value: 0, initial_balance: 0)
+  def initialize(value:, initial_balance:)
     @value = value
     @initial_balance = initial_balance
   end
