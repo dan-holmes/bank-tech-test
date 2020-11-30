@@ -25,8 +25,10 @@ I want to see a printed statement of my account history
 #### Input
 ```
 account = Account.new
-account.deposit(2000, '2012-01-13')
-account.withdraw(500, '2012-01-14')
+date = Date.new(2012, 1, 13)
+account.deposit(2000, date)
+date = Date.new(2012, 1, 14)
+account.withdraw(500, date)
 account.statement
 ```
 
