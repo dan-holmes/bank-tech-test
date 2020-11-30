@@ -38,3 +38,14 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+
+### Edge cases
+
+| Edge case | Expected output |
+|-----------|-----------------|
+| withdraw/deposit < 0 | Error: You must withdraw/deposit a positive amount of money.|
+| withdraw/deposit 0 | Error: You must withdraw/deposit a positive amount of money.|
+| withdraw more than balance | Error: You don't have enough money in your account.| 
+| withdraw/desposit not a number | Error: Input must be a number. |
+| withdraw/deposit without a given date | Default to today's date |
+| withdrawal/deposit fraction of penny | Store as float and round on summary |
