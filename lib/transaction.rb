@@ -10,4 +10,8 @@ class Transaction
     return :debit if @value > 0
     return :credit if @value < 0
   end
+
+  def new_balance
+    @initial_balance + @value
+  end
 end

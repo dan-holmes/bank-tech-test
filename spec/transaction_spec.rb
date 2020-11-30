@@ -20,4 +20,11 @@ describe Transaction do
       expect(transaction.type).to eq :credit
     end
   end
+
+  describe ".new_balance" do
+    it "returns the initial balance, plus the value of the transaction" do
+      transaction = Transaction.new(value: 10, initial_balance: 50)
+      expect(transaction.new_balance).to eq 60
+    end
+  end
 end
