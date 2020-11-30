@@ -4,4 +4,8 @@ class Transaction
   def initialize(value)
     @value = value
   end
+
+  def type
+    return :debit if @value > 0
+  end
 end
