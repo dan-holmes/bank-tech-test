@@ -14,8 +14,6 @@ class Account
 
   def withdraw(value, transaction_class: Transaction)
     deposit_value = -value
-    @balance += deposit_value
-    transaction = transaction_class.new(value: deposit_value, updated_balance: @balance)
-    @transactions.push(transaction)
+    deposit(deposit_value, transaction_class: transaction_class)
   end
 end
