@@ -9,6 +9,7 @@ class Account
   end
 
   def deposit(value, transaction_class: Transaction, date: Date.today)
+    raise "Value must be a number." if !value.is_a? Numeric
     raise "You must enter a non-zero amount." if value == 0
     raise "Insufficient funds for transaction." if @balance + value < 0
 

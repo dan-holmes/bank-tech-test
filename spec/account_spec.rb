@@ -36,6 +36,9 @@ describe Account do
     it "will error if transaction would lead to a negative balance" do
       expect { account.deposit(-60) }.to raise_error "Insufficient funds for transaction."
     end
+    it "will error if value given is not a number" do
+      expect { account.deposit("nan") }.to raise_error "Value must be a number."
+    end
   end
 
   describe ".withdraw" do
@@ -62,6 +65,9 @@ describe Account do
     end
     it "will error if transaction would lead to a negative balance" do
       expect { account.withdraw(60) }.to raise_error "Insufficient funds for transaction."
+    end
+    it "will error if value given is not a number" do
+      expect { account.withdraw("nan") }.to raise_error "Value must be a number."
     end
   end
 
