@@ -1,5 +1,42 @@
 # Bank Tech Test
 
+An application to model a bank for the Makers Bank mock Tech Test.
+
+Features:
+ - REPL application - run in IRB.
+ - Deposits
+ - Withdrawals 
+ - Printed summary
+
+ ## Use
+
+ ```shell
+git clone 
+cd bank-tech-test
+irb -r "./lib/account.rb"
+account = Account.new
+account.deposit(1000)
+account.withdraw(500)
+account.summary
+ ```
+
+Optionally add a date to a transaction with:
+
+```shell
+date = Date.new(2020, 11, 1)
+account.deposit(1000, date)
+```
+
+Run tests with:
+
+```shell
+rspec
+```
+
+Test coverage is currently 100%.
+
+
+
 ## Planning
 
 ### User stories
@@ -19,6 +56,8 @@ I want to see a printed statement of my account history
 ### Domain Model Diagram
 
 ![Domain Model Diagram](https://i.imgur.com/peHaEJb.png)
+
+Note: ``transaction.type`` has been replaced by ``transaction.debit`` and ``transaction.credit``.
 
 ### Input/Output
 
