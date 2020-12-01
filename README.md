@@ -45,7 +45,7 @@ date || credit || debit || balance
 
 | Edge case | Expected output |
 |-----------|-----------------|
-| withdraw/deposit < 0 | Error: You must withdraw/deposit a positive amount of money.|
+| withdraw/deposit < 0 | Negative withdrawel counted as a deposit and visa versa|
 | withdraw/deposit 0 | Error: You must withdraw/deposit a positive amount of money.|
 | withdraw more than balance | Error: You don't have enough money in your account.| 
 | withdraw/desposit not a number | Error: Input must be a number. |
