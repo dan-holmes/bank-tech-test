@@ -54,6 +54,9 @@ describe Account do
       expect(transaction_class).to receive(:new).with(value: -10, updated_balance: 40, date: date)
       account.withdraw(10, transaction_class: transaction_class, date: date)
     end
+    it "will reject a withdrawal of 0" do
+      expect { account.withdraw(0) }.to raise_error "You must enter a non-zero amount."
+    end
   end
 
   describe ".summary" do
