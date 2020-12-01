@@ -80,7 +80,7 @@ describe Account do
   describe ".summary" do
     context "when there are no transaction" do
       it "creates the headers date, credit, debit and balance" do
-        expect { account.summary }.to output(/date || credit || debit || balance/).to_stdout
+        expect { account.summary }.to output(%r"^date \|\| credit \|\| debit \|\| balance$").to_stdout
       end
     end
     context "when there is a deposit" do

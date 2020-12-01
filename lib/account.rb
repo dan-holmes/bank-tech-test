@@ -22,10 +22,9 @@ class Account
   end
 
   def summary
-    puts "date || credit || debit || balance"
+    print_header
     @transactions.each do |transaction|
-      transaction_array = convert_to_array(transaction)
-      puts convert_to_row(transaction_array)
+      print_transaction(transaction)
     end
   end
 
@@ -51,5 +50,14 @@ class Account
     raise "You must enter a non-zero amount." if value == 0
     raise "Insufficient funds for transaction." if @balance + value < 0
     raise "You can't deposit or withdraw a fraction of a penny." if value.round(2) != value
+  end
+
+  def print_header
+    puts "date || credit || debit || balance"
+  end
+
+  def print_transaction(transaction)
+    transaction_array = convert_to_array(transaction)
+    puts convert_to_row(transaction_array)
   end
 end
