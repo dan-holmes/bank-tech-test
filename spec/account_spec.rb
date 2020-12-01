@@ -33,6 +33,9 @@ describe Account do
     it "will reject a deposit of 0" do
       expect { account.deposit(0) }.to raise_error "You must enter a non-zero amount."
     end
+    it "will error if transaction would lead to a negative balance" do
+      expect { account.deposit(-60) }.to raise_error "Insufficient funds for transaction."
+    end
   end
 
   describe ".withdraw" do
@@ -56,6 +59,9 @@ describe Account do
     end
     it "will reject a withdrawal of 0" do
       expect { account.withdraw(0) }.to raise_error "You must enter a non-zero amount."
+    end
+    it "will error if transaction would lead to a negative balance" do
+      expect { account.withdraw(60) }.to raise_error "Insufficient funds for transaction."
     end
   end
 

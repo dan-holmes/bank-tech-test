@@ -47,7 +47,7 @@ date || credit || debit || balance
 |-----------|-----------------|
 | withdraw/deposit < 0 | Negative withdrawel counted as a deposit and visa versa|
 | withdraw/deposit 0 | Error: You must enter a non-zero amount.|
-| withdraw more than balance | Error: You don't have enough money in your account.| 
+| withdraw more than balance | Error: Insufficient funds for transaction.| 
 | withdraw/desposit not a number | Error: Input must be a number. |
 | withdraw/deposit without a given date | Default to today's date |
 | withdrawal/deposit fraction of penny | Store as float and round on summary |

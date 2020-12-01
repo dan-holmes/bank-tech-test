@@ -10,6 +10,7 @@ class Account
 
   def deposit(value, transaction_class: Transaction, date: Date.today)
     raise "You must enter a non-zero amount." if value == 0
+    raise "Insufficient funds for transaction." if @balance + value < 0
 
     @balance += value
     transaction = transaction_class.new(value: value, updated_balance: @balance, date: date)
