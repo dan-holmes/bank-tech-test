@@ -24,15 +24,16 @@ class Transaction
   private
 
   def debit
-    value if @value > 0
+    value if @value.positive?
   end
 
   def credit
-    -value if @value < 0
+    -value if @value.negative?
   end
 
   def format_currency(float)
     return nil if float == nil
+
     "%.2f" % float
   end
 end

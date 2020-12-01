@@ -46,9 +46,9 @@ class Account
   end
 
   def check_valid(value)
-    raise "Value must be a number." if !value.is_a? Numeric
-    raise "You must enter a non-zero amount." if value == 0
-    raise "Insufficient funds for transaction." if @balance + value < 0
+    raise "Value must be a number." unless value.is_a? Numeric
+    raise "You must enter a non-zero amount." if value.zero?
+    raise "Insufficient funds for transaction." if (@balance + value).negative?
     raise "You can't deposit or withdraw a fraction of a penny." if value.round(2) != value
   end
 
