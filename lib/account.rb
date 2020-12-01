@@ -12,6 +12,7 @@ class Account
     raise "Value must be a number." if !value.is_a? Numeric
     raise "You must enter a non-zero amount." if value == 0
     raise "Insufficient funds for transaction." if @balance + value < 0
+    raise "You can't deposit or withdraw a fraction of a penny." if value.round(2) != value
 
     @balance += value
     transaction = transaction_class.new(value: value, updated_balance: @balance, date: date)

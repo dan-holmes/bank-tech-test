@@ -50,4 +50,4 @@ date || credit || debit || balance
 | withdraw more than balance | Error: Insufficient funds for transaction.| 
 | withdraw/desposit not a number | Error: Input must be a number. |
 | withdraw/deposit without a given date | Default to today's date |
-| withdrawal/deposit fraction of penny | Store as float and round on summary |
+| withdrawal/deposit fraction of penny | Error: You can't deposit/withdraw a fraction of a penny. |

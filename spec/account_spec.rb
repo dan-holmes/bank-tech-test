@@ -39,6 +39,9 @@ describe Account do
     it "will error if value given is not a number" do
       expect { account.deposit("nan") }.to raise_error "Value must be a number."
     end
+    it "will error if given fractions of a penny" do
+      expect { account.deposit(1.001) }.to raise_error "You can't deposit or withdraw a fraction of a penny."
+    end
   end
 
   describe ".withdraw" do
@@ -68,6 +71,9 @@ describe Account do
     end
     it "will error if value given is not a number" do
       expect { account.withdraw("nan") }.to raise_error "Value must be a number."
+    end
+    it "will error if given fractions of a penny" do
+      expect { account.withdraw(1.001) }.to raise_error "You can't deposit or withdraw a fraction of a penny."
     end
   end
 
