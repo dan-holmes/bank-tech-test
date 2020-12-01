@@ -32,7 +32,7 @@ class Transaction
   end
 
   def format_currency(float)
-    return nil if float == nil
+    return nil if float.nil?
 
     "%.2f" % float
   end
