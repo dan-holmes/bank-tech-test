@@ -8,15 +8,15 @@ class Account
     @transactions = []
   end
 
-  def deposit(value, transaction_class: Transaction)
+  def deposit(value, transaction_class: Transaction, date: Date.today)
     @balance += value
-    transaction = transaction_class.new(value: value, updated_balance: @balance)
+    transaction = transaction_class.new(value: value, updated_balance: @balance, date: date)
     @transactions.push(transaction)
   end
 
-  def withdraw(value, transaction_class: Transaction)
+  def withdraw(value, transaction_class: Transaction, date: Date.today)
     deposit_value = -value
-    deposit(deposit_value, transaction_class: transaction_class)
+    deposit(deposit_value, transaction_class: transaction_class, date: date)
   end
 
   def summary
