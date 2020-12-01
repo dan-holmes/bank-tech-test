@@ -11,7 +11,7 @@ Features:
  ## Use
 
  ```shell
-git clone 
+git clone https://github.com/dan-holmes/bank-tech-test.git
 cd bank-tech-test
 irb -r "./lib/account.rb"
 account = Account.new
