@@ -30,6 +30,9 @@ describe Account do
       expect(transaction_class).to receive(:new).with(value: 10, updated_balance: 10, date: date)
       account.deposit(10, transaction_class: transaction_class, date: date)
     end
+    it "will reject a deposit of 0" do
+      expect { account.deposit(0) }.to raise_error "You must enter a non-zero amount."
+    end
   end
 
   describe ".withdraw" do

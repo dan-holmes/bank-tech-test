@@ -9,6 +9,8 @@ class Account
   end
 
   def deposit(value, transaction_class: Transaction, date: Date.today)
+    raise "You must enter a non-zero amount." if value == 0
+
     @balance += value
     transaction = transaction_class.new(value: value, updated_balance: @balance, date: date)
     @transactions.push(transaction)
