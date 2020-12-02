@@ -28,7 +28,7 @@ class Printer
 
   def self.convert_to_row(array)
     seperated_array = array.zip(Array.new(3, "||")).flatten
-    seperated_array = seperated_array.compact
+    seperated_array.reject! { |e| e.nil? || e == "" }
     seperated_array.join(" ")
   end
 end

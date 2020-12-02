@@ -10,18 +10,21 @@ describe Printer do
         expect { Printer.summary(transactions) }.to output(%r"^date || credit || debit || balance$").to_stdout
       end
     end
-    context "when there is a deposit" do
+    context "when there are deposits" do
       before do
+        transactions.push(transaction2)
         transactions.push(transaction1)
       end
       it "outputs the date, credit, debit and balance for that transaction" do
-        expect { Printer.summary(transactions) }.to output(%r"^12/02/2020 || 50.00 || || 50.00$").to_stdout
+        expect { Printer.summary(transactions) }.to output(%r{12\/02\/2020 \|\| \|\| 50.00 \|\| 50.00}).to_stdout
       end
-      it "outputs a line break between each row, and after the header" do
-        transactions.push(transaction2)
-        table = %r"^date || credit || debit || balance\n12/02/2020 || 50.00 || || 50.00\n14/02/2020 || || 20.00 || 30.00$"
-        expect { Printer.summary(transactions) }.to output(table).to_stdout
-      end
+      # it "outputs deposits in reverse chronological order" do
+      #   expect { Printer.summary(transactions) }.to output(%r{14/02/2020.*12/02/2020}s).to_stdout
+      # end
+      # it "outputs a line break between each row, and after the header" do
+      #   table = "date || credit || debit || balance\n14/02/2020 || 50.00 || || 50.00\n12/02/2020 || || 20.00 || 30.00"
+      #   expect { Printer.summary(transactions) }.to output(table).to_stdout
+      # end
     end
   end
 end
