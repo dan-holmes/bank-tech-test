@@ -67,33 +67,4 @@ describe Account do
       expect { account.withdraw(1.001) }.to raise_error "You can't deposit or withdraw a fraction of a penny."
     end
   end
-
-  describe ".summary" do
-    context "when there are no transaction" do
-      it "creates the headers date, credit, debit and balance" do
-        expect { account.summary }.to output(%r"^date \|\| credit \|\| debit \|\| balance$").to_stdout
-      end
-    end
-    context "when there is a deposit" do
-      let(:transaction1) {
-        double(:transaction,
-               date: Date.new(2020, 1, 1),
-               credit_formatted: "50.00",
-               debit_formatted: nil,
-               updated_balance_formatted: "100.00")
-      }
-      before do
-        allow(transaction_class).to receive(:new) { transaction1 }
-        account.deposit(50, transaction_class: transaction_class)
-      end
-      it "outputs the date, credit, debit and balance for that transaction" do
-        expect { account.summary }.to output(%r"^01/01/2020 || 50.00 || || 100.00$").to_stdout
-      end
-      it "outputs a line break between each row, and after the header" do
-        account.deposit(50, transaction_class: transaction_class)
-        table = %r"^date || credit || debit || balance\n01/01/2020 || 50.00 || || 100.00\n01/01/2020 || 50.00 || || 100.00$"
-        expect { account.summary }.to output(table).to_stdout
-      end
-    end
-  end
 end
