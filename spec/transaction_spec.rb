@@ -1,14 +1,6 @@
 require "transaction"
 
 describe Transaction do
-  describe ".initialize" do
-    it "stores a value and updated_balance" do
-      transaction = Transaction.new(value: 10, updated_balance: 50)
-      expect(transaction.value).to eq 10
-      expect(transaction.updated_balance).to eq 50
-    end
-  end
-
   context "transaction value positive" do
     let(:transaction) { Transaction.new(value: 10, updated_balance: 50) }
     describe ".debit_formatted" do
@@ -45,7 +37,7 @@ describe Transaction do
   end
 
   describe ".date" do
-    it "can be set and retrieved" do
+    it "can be set manually for each transaction" do
       transaction = Transaction.new(value: 10, updated_balance: 50, date: Date.new(2020, 1, 1))
       expect(transaction.date).to eq Date.new(2020, 1, 1)
     end
