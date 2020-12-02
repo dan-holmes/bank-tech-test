@@ -1,6 +1,7 @@
 class Printer
   def self.summary(transactions)
     print_header
+    transactions.sort_by! { |t| t.date }.reverse!
     transactions.each do |transaction|
       print_transaction(transaction)
     end
