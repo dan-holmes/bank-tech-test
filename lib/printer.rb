@@ -1,13 +1,21 @@
 class Printer
   def self.summary(transactions)
-    print_header
+    transactions = sort_by_date(transactions)
+    print_summary(transactions)
+  end
+
+  private
+
+  def self.sort_by_date(transactions)
     transactions.sort_by! { |t| t.date }.reverse!
+  end
+
+  def self.print_summary(transactions)
+    print_header
     transactions.each do |transaction|
       print_transaction(transaction)
     end
   end
-
-  private
 
   def self.print_header
     puts "date || credit || debit || balance"
