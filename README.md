@@ -24,10 +24,10 @@ Optionally add a date to a transaction with:
 
 ```shell
 date = Date.new(2020, 11, 1)
-account.deposit(1000, date)
+account.deposit(1000, date: date)
 ```
 
-Run tests with:
+Run tests and see test coverage with:
 
 ```shell
 rspec
@@ -35,7 +35,7 @@ rspec
 
 Test coverage is currently 100%.
 
-
+![Test coverage](https://i.imgur.com/9Divn3G.png)
 
 ## Planning
 
