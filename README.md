@@ -17,7 +17,7 @@ irb -r "./lib/account.rb"
 account = Account.new
 account.deposit(1000)
 account.withdraw(500)
-account.summary
+Printer.summary(account.transactions)
  ```
 
 Optionally add a date to a transaction with:
