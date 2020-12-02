@@ -21,10 +21,10 @@ describe Printer do
       it "outputs deposits in reverse chronological order" do
         expect { Printer.summary(transactions) }.to output(%r{14\/02\/2020.*12\/02\/2020}m).to_stdout
       end
-      # it "outputs a line break between each row, and after the header" do
-      #   table = "date || credit || debit || balance\n14/02/2020 || 50.00 || || 50.00\n12/02/2020 || || 20.00 || 30.00"
-      #   expect { Printer.summary(transactions) }.to output(table).to_stdout
-      # end
+      it "outputs a line break between each row, and after the header" do
+        table = "date || credit || debit || balance\n14/02/2020 || 20.00 || || 30.00\n12/02/2020 || || 50.00 || 50.00\n"
+        expect { Printer.summary(transactions) }.to output(table).to_stdout
+      end
     end
   end
 end
