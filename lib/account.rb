@@ -1,4 +1,5 @@
 require_relative "./transaction"
+require_relative "./printer"
 
 class Account
   attr_reader :balance, :transactions
